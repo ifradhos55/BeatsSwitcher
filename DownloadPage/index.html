@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Beats Switcher for Mac</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <main class="container">
+        <div class="card">
+            <img src="logo.png" alt="Beats Switcher Logo" class="logo">
+
+            <h1 class="title">Beats Switcher</h1>
+            <p class="subtitle">Experience true auto-switching.</p>
+
+            <div class="description">
+                <p>Seamlessly transition audio to your favorite Bluetooth headphones the second you play audio on your Mac. No more clicking through menus.</p>
+                <div class="badge-container">
+                    <span class="badge">Apple Silicon & Intel Compatible</span>
+                    <span class="badge badge-light">macOS 10.15+</span>
+                </div>
+            </div>
+
+            <div class="features-list">
+                <div class="feature-item">
+                    <span class="feature-icon">🎧</span>
+                    <div class="feature-text">
+                        <strong>Multi-Device Support</strong>
+                        <span>Easily save and switch between multiple AirPods, Beats, or any Bluetooth headphones.</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">⚡</span>
+                    <div class="feature-text">
+                        <strong>Instant Auto-Connect</strong>
+                        <span>Detects audio playback and instantly routes it to your active device in milliseconds.</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💎</span>
+                    <div class="feature-text">
+                        <strong>Native macOS UI</strong>
+                        <span>Clean, lightweight menu bar utility built natively for Mac. Zero bloatware.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="terminal-box">
+                <div class="terminal-header">
+                    <span class="dot close"></span>
+                    <span class="dot minimize"></span>
+                    <span class="dot expand"></span>
+                    <span class="terminal-title">Install via Terminal</span>
+                </div>
+                <div class="terminal-body">
+                    <code>curl -sL http://localhost:8000/install.sh | bash</code>
+                    <button class="copy-button"
+                        onclick="navigator.clipboard.writeText('curl -sL http://localhost:8000/install.sh | bash'); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy', 2000);">Copy</button>
+                </div>
+            </div>
+
+            <p class="footnote" style="margin-top: 1.5rem; margin-bottom: 0.5rem;"><strong>How to install:</strong> Open
+                the <strong>Terminal</strong> app on your Mac, paste the command above, and press Enter. This securely
+                installs the app directly to your Applications folder and bypasses macOS Gatekeepers.</p>
+        </div>
+    </main>
+</body>
+
+
+<footer>
+    <p>-- Made by Ifrad Hossain</p>
+    <p>© 2026 Beats Switcher. All rights reserved.</p>
+</footer>
+
+</html>
