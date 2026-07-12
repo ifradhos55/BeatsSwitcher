@@ -1,11 +1,13 @@
 :root {
-    --bg-color: #0d0d0d;
-    --text-primary: #ffffff;
-    --text-secondary: #a1a1aa;
-    --accent: #2c2c2e;
-    --accent-hover: #3a3a3c;
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --bg-color: #030305;
+    --text-primary: #f0f0f5;
+    --text-secondary: #8c8c9e;
+    --accent: #111115;
+    --accent-hover: #1a1a20;
+    --glass-bg: rgba(20, 20, 30, 0.4);
+    --glass-border: rgba(0, 240, 255, 0.15);
+    --glow-cyan: rgba(0, 240, 255, 0.4);
+    --glow-purple: rgba(176, 38, 255, 0.4);
 }
 
 * {
@@ -37,20 +39,30 @@ body {
     overflow: hidden;
     z-index: 0;
     pointer-events: none;
+    background-image: 
+        linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: grid-scroll 20s linear infinite;
+}
+
+@keyframes grid-scroll {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
 }
 
 .glow-orb {
     position: absolute;
     border-radius: 50%;
     filter: blur(100px);
-    opacity: 0.4;
+    opacity: 0.5;
     animation: float 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .orb-1 {
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(100, 100, 110, 0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--glow-cyan) 0%, transparent 70%);
     top: -100px;
     left: -200px;
 }
@@ -58,7 +70,7 @@ body {
 .orb-2 {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(200, 200, 200, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--glow-purple) 0%, transparent 70%);
     bottom: -150px;
     right: -100px;
     animation-delay: -10s;
@@ -76,20 +88,20 @@ body {
     width: 100%;
     max-width: 500px;
     padding: 2rem;
-    margin: auto 0;
+    margin: auto;
     animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .card {
     background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border: 1px solid var(--glass-border);
     border-radius: 32px;
     padding: 3rem 2.5rem;
     text-align: center;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.05), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 /* Typography & Layout */
@@ -210,9 +222,10 @@ body {
 
 /* Terminal Box */
 .terminal-box {
-    background: #1e1e1e;
+    background: rgba(10, 10, 15, 0.8);
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
     overflow: hidden;
     margin: 1rem auto;
     text-align: left;
@@ -256,7 +269,8 @@ body {
 .terminal-body code {
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
     font-size: 0.9rem;
-    color: #e6e6e6;
+    color: #00f0ff;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
     overflow-x: auto;
     white-space: nowrap;
 }
@@ -289,17 +303,19 @@ body {
 .feature-item {
     display: flex;
     align-items: flex-start;
-    gap: 1rem;
-    padding: 1rem;
+    gap: 1.25rem;
+    padding: 1.25rem;
     background: rgba(255, 255, 255, 0.02);
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: transform 0.2s, background 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: transform 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
 .feature-item:hover {
     transform: translateX(5px);
     background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(0, 240, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 240, 255, 0.08);
 }
 
 .feature-icon {
