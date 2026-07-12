@@ -9,11 +9,11 @@ OPTIONS = {
         'LSUIElement': True,
         'CFBundleName': 'BeatsSwitcher',
         'CFBundleDisplayName': 'BeatsSwitcher',
-        'CFBundleIdentifier': 'com.mastereggway.beatsswitcher',
+        'CFBundleIdentifier': 'com.beatsswitcher.app',
         'CFBundleShortVersionString': '1.0.0',
         'CFBundleVersion': '1',
         'LSMinimumSystemVersion': '10.15',
-        'NSHumanReadableCopyright': '© 2026 mastereggway. All rights reserved.',
+        'NSHumanReadableCopyright': '© 2026. All rights reserved.',
     },
     'packages': ['rumps', 'objc', 'Foundation'],
 }

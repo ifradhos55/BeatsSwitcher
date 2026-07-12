@@ -1,6 +1,12 @@
 {
-    "model_name": "Beats Solo Pods",
-    "model_number": "A3150",
-    "serial_number": "HQK4KJWYD2",
-    "version": "3A130"
+    "active_device_serial": "YOUR_SERIAL_HERE",
+    "devices": [
+        {
+            "model_name": "Beats Solo Pods",
+            "model_number": "AXXXX",
+            "serial_number": "YOUR_SERIAL_HERE",
+            "version": "XXXXX",
+            "cached_mac": ""
+        }
+    ]
 }

@@ -1,10 +1,8 @@
 """
-BeatsSwitcher — Seamless Bluetooth Auto-Connect for Beats Headphones on macOS.
+BeatsSwitcher - Seamless Bluetooth auto-connect for Beats headphones on macOS.
 
 Monitors audio output and automatically connects your Beats headphones when
 media starts playing. Sits in the menu bar and provides status at a glance.
-
-Copyright © 2026 mastereggway. All rights reserved.
 """
 
 __version__ = "1.0.0"
@@ -19,6 +17,15 @@ import sys
 import logging
 from logging.handlers import RotatingFileHandler
 from enum import Enum, auto
+
+def restart_app():
+    """Helper to restart the app dynamically."""
+    app_path = os.path.dirname(os.path.dirname(os.path.dirname(sys.executable)))
+    if not app_path.endswith(".app"):
+        app_path = os.path.expanduser("~/Applications/BeatsSwitcher.app")
+    script = f'sleep 1 && open -a "{app_path}"'
+    subprocess.Popen(["/bin/bash", "-c", script])
+    rumps.quit_application()
 
 # ---------------------------------------------------------------------------
 # Paths & Logging
@@ -76,13 +83,13 @@ def load_config():
 
     # Default initial configuration
     return {
-        "active_device_serial": "HQK4KJWYD2",
+        "active_device_serial": "YOUR_SERIAL_HERE",
         "devices": [
             {
                 "model_name": "Beats Solo Pods",
-                "model_number": "A3150",
-                "serial_number": "HQK4KJWYD2",
-                "version": "3A130",
+                "model_number": "AXXXX",
+                "serial_number": "YOUR_SERIAL_HERE",
+                "version": "XXXXX",
                 "cached_mac": "",
             }
         ]
@@ -171,11 +178,7 @@ def show_settings_window(app_instance):
         save_config(config)
         
         logging.info("New device added. Restarting app...")
-        
-        # Restart the app
-        script = 'sleep 1 && open -a "/Users/mastereggway/Applications/BeatsSwitcher.app"'
-        subprocess.Popen(["/bin/bash", "-c", script])
-        rumps.quit_application()
+        restart_app()
 
 
 # ---------------------------------------------------------------------------
@@ -504,10 +507,7 @@ class BeatsSwitcherApp(rumps.App):
         save_config(self.config)
         
         logging.info("Restarting app...")
-        # Restart the app
-        script = 'sleep 1 && open -a "/Users/mastereggway/Applications/BeatsSwitcher.app"'
-        subprocess.Popen(["/bin/bash", "-c", script])
-        rumps.quit_application()
+        restart_app()
 
     def on_settings(self, _):
         """Open the device-settings dialog."""
@@ -582,10 +582,7 @@ class BeatsSwitcherApp(rumps.App):
                     self.config.setdefault("devices", []).append(new_device)
                     self.config["active_device_serial"] = new_device["serial_number"]
                     save_config(self.config)
-                    
-                    script = 'sleep 1 && open -a "/Users/mastereggway/Applications/BeatsSwitcher.app"'
-                    subprocess.Popen(["/bin/bash", "-c", script])
-                    rumps.quit_application()
+                    restart_app()
                     
         except Exception as e:
             logging.error(f"Scan failed: {e}")
@@ -630,10 +627,7 @@ class BeatsSwitcherApp(rumps.App):
                         self.config["active_device_serial"] = ""
                         
                 save_config(self.config)
-                
-                script = 'sleep 1 && open -a "/Users/mastereggway/Applications/BeatsSwitcher.app"'
-                subprocess.Popen(["/bin/bash", "-c", script])
-                rumps.quit_application()
+                restart_app()
 
     @rumps.clicked("Toggle Auto-Connect")
     def on_toggle_active(self, sender):
@@ -655,8 +649,7 @@ class BeatsSwitcherApp(rumps.App):
             title="BeatsSwitcher",
             message=(
                 f"Version {__version__}\n\n"
-                "Seamless Bluetooth auto-connect\nfor Beats headphones on macOS.\n\n"
-                "© 2026 mastereggway"
+                "Seamless Bluetooth auto-connect\nfor Beats headphones on macOS.\n"
             ),
         )
 
