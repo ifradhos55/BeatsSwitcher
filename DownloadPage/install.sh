@@ -3,7 +3,7 @@
 echo "🎧 Installing Beats Switcher..."
 
 # In a real-world scenario, this URL would be your actual website domain.
-DMG_URL="http://localhost:8000/BeatsSwitcher.dmg"
+DMG_URL="https://beatsswitcher.store/BeatsSwitcher.dmg"
 TEMP_DIR=$(mktemp -d)
 DMG_FILE="$TEMP_DIR/BeatsSwitcher.dmg"
 
